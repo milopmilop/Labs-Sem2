@@ -117,3 +117,9 @@ class House():
         
         self._apartments = [apartment for apartment in self._apartments if apartment._is_available]
         return self._apartments
+    
+examplar_house = House()
+
+examplar_house.add(Apartment('str', 45.4, 2000000, 1, True))
+
+print(examplar_house.get_all())

@@ -4,7 +4,7 @@ from src.lib.lab01.model import Apartment
 # Создание экземпляра класса House:
 examplar_apartment = House()
 
-"""
+
 # Инициализация нескольких объектов класса House:
 
 test_object_01 = Apartment("smth_01", 45.0, 3500000, 1, False)
@@ -41,7 +41,6 @@ print(examplar_apartment.add(test_object_02))
 print(examplar_apartment[0])
 
 # Реализация сортировки:
-"""
 
 # Инициализация объектов класса Apartment:
 test_object_03 = Apartment("Bsmth", 45.0, 340000000, 2, False)
@@ -55,7 +54,7 @@ examplar_apartment.add(test_object_04)
 examplar_apartment.add(test_object_05)
 examplar_apartment.add(test_object_06)
 
-"""
+
 # ДО:
 print(examplar_apartment.get_all())
 
@@ -72,9 +71,8 @@ print(examplar_apartment.get_available())
 
 # Самые дорогие относительно средней стоимость всех квартир в доме:
 print(examplar_apartment.get_expensive())
-"""
 
-"""
+
 # Сценарии работы коллекции:
 
 # 1. Поиск просторных и дорогих квартир (Клиент):
@@ -97,9 +95,7 @@ biggest_by_squares = examplar_apartment.sort_by_squares()
 
 print(examplar_apartment[0])
 
-"""
 
-"""
 # 2. Обновление статусов квартир и их цен (Квартиры подорожали, плата за ренту стала больше и ебать к сожалению никто не тянет()):
 
 # 1) Обновление статусов квартир:
@@ -115,7 +111,7 @@ for element in examplar_apartment:
 # Вывод:
 print(examplar_apartment.get_all())
 
-"""
+
 
 # 3. Сортировка квартир по доступности и выбор самой дешевой из них (Клиент):
 
