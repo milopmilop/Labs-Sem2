@@ -89,3 +89,5 @@
 * `validate_calculate_price` - Валидация расчета цены (type: float, range: [0, +∞)).
 
 <h1 align = 'center'>demo.py</h1>
+
+![alt text](../../../images/lab03/image.png)

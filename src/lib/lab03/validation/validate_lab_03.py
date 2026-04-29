@@ -1,6 +1,6 @@
 def validate_floor(floor: int) -> bool:
-    if not isinstance(floor, int) or not 0 <= floor <= 2:
-        raise ValueError("Этаж должен быть целым числом в диапазоне [0, 2]")
+    if not isinstance(floor, int):
+        raise ValueError("Этаж должен быть целым числом в диапазоне [0, 5]")
     return True
 
 def validate_terrace(terrace: bool) -> bool:
@@ -34,6 +34,13 @@ def validate_price(price: float) -> bool:
     return True
 
 def validate_available(value: bool) -> bool:
+
     if not isinstance(value, bool):
         raise TypeError("Статус доступности должен быть True/False")
+    return True
+
+def validate_price_per_sqm(price_per_sqm: int | float) -> bool:
+    
+    if not isinstance(price_per_sqm, (int, float)) or price_per_sqm < 0:
+        raise ValueError("Цена за квадратный метр должна быть >= 0")
     return True

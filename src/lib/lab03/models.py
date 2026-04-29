@@ -1,20 +1,25 @@
-from dataclasses import dataclass
-from .base import Apartment
+from base import Apartment
 
-from .validate import (
+from validation.validate_lab_03 import (
     validate_ceiling_height,
     validate_floor,
+    validate_rooms,
     validate_terrace,
     validate_price_per_sqm
 )
 
-@dataclass
 class Penthouse(Apartment):
     
-    _floor: int
-    _terrace: bool
-    _ceiling_height: float
+    def __init__(self, address: str, area: float, price: float, rooms: int, is_available: bool, floor: int, terrace: bool, ceiling_height: float):
+        super().__init__(address, area, price, rooms, is_available)
 
+        if validate_floor(floor):
+            self._floor = floor
+        if validate_terrace(terrace):
+            self._terrace = terrace
+        if validate_ceiling_height(ceiling_height):
+            self._ceiling_height = ceiling_height
+    
     @property
     def floor(self) -> int:
         return self._floor
@@ -59,6 +64,12 @@ class Penthouse(Apartment):
             self.ceiling_height == other.ceiling_height
         )
     
+    def get_info(self) -> str:
+        return super().__str__()
+    
+    def get_address(self) -> str:
+        return self._address
+    
     def terrace_access_switch(self) -> bool:
 
         self._terrace = not self._terrace
@@ -69,17 +80,17 @@ class Penthouse(Apartment):
         validate_price_per_sqm(price_per_sqm)
         return self._area * price_per_sqm * 1.5
     
-@dataclass
+
 class Studio(Apartment):
     
-    _rooms: int = 1
-    _floor: int
-    
-    def __post_init__(self):
+    def __init__(self, address: str, area: float, price: float, rooms: int, is_available: bool, floor: int):
+        super().__init__(address, area, price, rooms, is_available)
+        
+        if validate_floor(floor):
+            self._floor = floor
 
-        validate_floor(self._floor)
-        validate_rooms(self._rooms)
-
+        if validate_rooms(rooms):
+            self._rooms = rooms
     @property
     def rooms(self) -> int:
         return self._rooms
@@ -114,6 +125,12 @@ class Studio(Apartment):
             self._floor == other._floor
         )
 
+    def get_info(self) -> str:
+        return super().__str__()
+
+    def get_address(self) -> str:
+        return self._address
+        
     def switch_floor(self) -> int:
 
         self._floor = 2 if self._floor == 1 else 1

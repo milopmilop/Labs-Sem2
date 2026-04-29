@@ -1,11 +1,11 @@
-from .models import Studio, Penthouse
-from .collection import House
+from models import Studio, Penthouse
+from collection import House
 
 def for_three():
 
     # Создание объектов разных типов:
-    studio_example = Studio("ул. Мира, 10", 30.0, 3_000_000, 1, True, _floor=5)
-    penthouse_example = Penthouse("ЖК 'Центр'", 120.0, 20_000_000, 4, True, _floor=25, _terrace=True, _ceiling_height=4.5)
+    studio_example = Studio("ул. Мира, 10", 30.0, 3_000_000, 1, True, 3)
+    penthouse_example = Penthouse("ЖК 'Центр'", 120.0, 20_000_000, 4, True, 25, True, 3)
 
     # Вывод объектов:
 
@@ -34,22 +34,22 @@ def for_four():
 
     # Инициализация объектов дочерних классов:
 
-    studio_example = Studio("ул. Мира, 10", 30.0, 3_000_000, 1, True, _floor=5)
-    penthouse_example = Penthouse("ЖК 'Центр'", 120.0, 20_000_000, 4, True, _floor=25, _terrace=True, _ceiling_height=4.5)
+    studio_example = Studio("ул. Мира, 10", 30.0, 3_000_000, 1, True, 5)
+    penthouse_example = Penthouse("ЖК 'Центр'", 120.0, 20_000_000, 4, True, 25, True, 5)
     
     # Добавление объектов в коллекцию
-    collection_example.add_object(studio_example)
-    collection_example.add_object(penthouse_example)
+    collection_example.add(studio_example)
+    collection_example.add(penthouse_example)
 
     # Работа с разными типами через коллекцию:
 
-    for obj in collection_example.get_objects():
-        print(obj.get_info())
+    for obj in collection_example.get_all():
+        print(obj.__str__())
 
     # Вызов одного метода - разное поведение:
 
-    for obj in collection_example.get_objects():
-        print(obj.calculate_price())
+    for obj in collection_example:
+        print(obj.calculate_price(1000))
 
     # Проверка типов через isintance реализована в валидации коллекции (сами методы валидации, написанные через isinstance см. в ~/lab02/validate.py)
 
@@ -61,12 +61,12 @@ def for_five():
     # Вызов одинакового метода для разных типов и получение разных результатов:
 
     # - Инициализация объектов разных типов:
-    studio_example = Studio("ул. Мира, 10", 30.0, 3_000_000, 1, True, _floor=5)
-    penthouse_example = Penthouse("ЖК 'Центр'", 120.0, 20_000_000, 4, True, _floor=25, _terrace=True, _ceiling_height=4.5)
+    studio_example = Studio("ул. Мира, 10", 30.0, 3_000_000, 1, True, 5)
+    penthouse_example = Penthouse("ЖК 'Центр'", 120.0, 20_000_000, 4, True, 25, True, 5)
     
     # - Вызов метода calculate_price для разных типов:
-    print(f"Цена студии: {studio_example.calculate_price()}")
-    print(f"Цена пентхауса: {penthouse_example.calculate_price()}")
+    print(f"Цена студии: {studio_example.calculate_price(1000)}")
+    print(f"Цена пентхауса: {penthouse_example.calculate_price(1000)}")
 
     # Фильтрация по типу:
 
@@ -74,13 +74,13 @@ def for_five():
     collection_example = House()
 
     # - Добавление объектов разных типов в коллекцию:
-    collection_example.add_object(studio_example)
-    collection_example.add_object(penthouse_example)
+    collection_example.add(studio_example)
+    collection_example.add(penthouse_example)
 
     # - Фильтрация по типу:
 
-    studios = collection_example.filter_by_type(Studio)
-    penthouses = collection_example.filter_by_type(Penthouse)
+    studios = collection_example.filter_by_type_studio()
+    penthouses = collection_example.filter_by_type_penthouse()
 
     print(f"Студии: {len(studios)}")
     print(f"Пентхаусы: {len(penthouses)}")
@@ -104,10 +104,10 @@ def for_five():
     # - 3. Поиск объектов типа Penthouse и Studio в коллекции и высчитывание стоимости каждого:
 
     for penthouse in penthouses:
-        print(f"Цена пентхауса на {penthouse.get_address()}: {penthouse.calculate_price()}")
+        print(f"Цена пентхауса на {penthouse.get_address()}: {penthouse.calculate_price(1000)}")
     
     for studio in studios:
-        print(f"Цена студии на {studio.get_address()}: {studio.calculate_price()}")
+        print(f"Цена студии на {studio.get_address()}: {studio.calculate_price(1000)}")
 
 if __name__ == "__main__":
     for_three()

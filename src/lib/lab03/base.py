@@ -1,4 +1,4 @@
-from .validate import (
+from validation.validate_lab_01 import (
     validate_address,
     validate_area,
     validate_price,
