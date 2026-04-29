@@ -141,3 +141,6 @@
 
 * `examplar_apartment.get_expensive()` - Вывод самых больших по площади квартир среди дорогих и доступных для заселения.
 
+# Вывод demo.py
+
+![alt text](../../../images/lab02/image.png)
