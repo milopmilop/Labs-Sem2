@@ -110,6 +110,6 @@ def for_five():
         print(f"Цена студии на {studio.get_address()}: {studio.calculate_price(1000)}")
 
 if __name__ == "__main__":
-    for_three()
-    for_four()
-    for_five()
+     for_three()
+     for_four()
+     for_five()
