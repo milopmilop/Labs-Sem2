@@ -90,4 +90,22 @@
 
 <h1 align = 'center'>demo.py</h1>
 
-![alt text](../../../images/lab03/image.png)
+# for_three
+
+![alt text](../../../images/lab03/3.png)
+
+![alt text](../../../images/lab03/vivo33.png)
+
+# for_four
+
+![alt text](../../../images/lab03/4.png)
+
+![alt text](../../../images/lab03/vivo4.png)
+
+# for_five
+
+![alt text](../../../images/lab03/51.png)
+
+![alt text](../../../images/lab03/52.png)
+
+![alt text](../../../images/lab03/vivo5.png)
